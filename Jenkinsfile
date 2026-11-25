@@ -45,17 +45,18 @@ pipeline {
             }
         }
 
-        stage('4. Deploy (Simulado)') {
-            steps {
-                echo "==> Desplegando en Kali Linux..."
-                sh '''
-                    sudo mkdir -p ${DEPLOY_DIR}
-                    sudo cp app.py init_db.py requirements.txt ${DEPLOY_DIR}/
-                    echo "Despliegue completado en ${DEPLOY_DIR}"
-                    ls -la ${DEPLOY_DIR}
-                '''
-            }
-        }
+	stage('4. Deploy (Simulado)') {
+	    steps {
+		echo "==> Desplegando en Kali Linux..."
+		sh '''
+		    mkdir -p $HOME/app-deploy
+		    cp app.py init_db.py requirements.txt $HOME/app-deploy/
+		    echo "Despliegue completado en $HOME/app-deploy"
+		    ls -la $HOME/app-deploy
+		'''
+	    }
+	}
+
     }
 
     post {
